@@ -1,0 +1,28 @@
+name: Matrix Build
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: matrix-823f8dd
+        run: echo "Building for Node ${{ matrix.node-version }}"
+
+      - name: Generate artifact
+        run: echo "Build output for Node ${{ matrix.node-version }}" > output.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-823f8dd-v${{ matrix.node-version }}
+          path: output.txt
