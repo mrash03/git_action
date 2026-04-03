@@ -1,1 +1,1 @@
-echo "your_email@example.com" > README.md
+your_email@example.com
